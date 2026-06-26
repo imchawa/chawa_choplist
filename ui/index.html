@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle List</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            display: none;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Caveat', cursive; 
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.4); 
+        }
+
+        .fade-in {
+            animation: fadeInSimple 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeInSimple {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .paper-container {
+            width: 450px;
+            height: 600px;
+            padding: 0; 
+            box-sizing: border-box;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+            background: #fcf5e5 url('paper-bg.png') no-repeat center center;
+            background-size: cover; 
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1a2a40; 
+            margin: 0;
+            padding-top: 30px;
+            text-transform: uppercase;
+            font-size: 32px; 
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+       #dynamic-task-container {
+            position: absolute;
+  
+            top: 112px;        
+            left: 0;           
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .task-list {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .task-item {
+            position: relative; 
+            font-family: 'Caveat', cursive;
+            font-size: 26px; 
+            font-weight: 700;
+            color: #1e2530;    
+            display: block;
+            width: fit-content; 
+            height: 36px;        
+            line-height: 36px;   
+            margin-bottom: 0;    
+            padding-left: 60px;  
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            box-sizing: border-box;
+            transition: color 0.3s ease;
+        }
+
+        .crossed-out {
+            position: relative;
+            color: #7d828a;
+            font-style: italic;
+        }
+
+        .crossed-out::after {
+            content: '';
+            position: absolute;
+            left: 54px;
+            top: 50%;
+            width: 0;
+            height: 3px;
+            background: #9b1c1c; 
+            transform: translateY(-50%) rotate(-1deg);
+            box-shadow: 0px 1px 1px rgba(0,0,0,0.15);
+            animation: scratchOut 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        @keyframes scratchOut {
+            0% { width: 0; } 
+            100% { width: calc(100% - 45px); } 
+        }
+
+        .close-btn {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 24px;
+            background: #8b0000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: Arial, sans-serif; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        #streak-counter {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-family: 'Caveat', cursive;
+            font-size: 28px;
+            color: #9b1c1c;
+            font-weight: bold;
+            transform: rotate(3deg);
+        }
+
+        #approved-stamp {
+
+            opacity: 0; 
+            pointer-events: none;
+            position: absolute;
+            top: 45%;      
+            left: 50%;     
+            font-size: 55px;
+            color: rgba(180, 0, 0, 0.6); 
+            border: 6px solid rgba(180, 0, 0, 0.6);
+            padding: 10px 15px;
+            font-family: 'Courier New', Courier, monospace; 
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            box-shadow: inset 0px 0px 4px rgba(180,0,0,0.3);
+
+            transform: translate(-50%, -50%) scale(2.5) rotate(-12deg);
+        }
+
+        .stamp-animation {
+
+            animation: stampDrop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes stampDrop {
+            0% { transform: translate(-50%, -50%) scale(2.5) rotate(-12deg); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1) rotate(-12deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="paper-container" id="main-paper">
+        <h2>Vehicle List</h2>
+
+        <div id="streak-counter">Streak: <span id="streak-number">0</span></div>
+        <div id="approved-stamp">COMPLETED</div>
+
+        <div id="dynamic-task-container"></div>
+
+        <button class="close-btn" id="close">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
