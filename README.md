@@ -1,6 +1,8 @@
 # chawa_choplist
 Chopshop with tiers
 
+<img width="496" height="650" alt="choplist" src="https://github.com/user-attachments/assets/fe9a0732-807f-4e27-bf0e-96939ec5d361" />
+
 features
 - 3 options for scrapping, Automatic, Manual, Let the player choose
 - Auto and manual reward modifiers
@@ -22,8 +24,6 @@ This was done with qbx, ox_inventory, qbx_police. Edit it to your liking. This g
 https://github.com/user-attachments/assets/aa7967bf-522d-4dd3-8d27-13627cbc45ef
 
 <img width="918" height="603" alt="manual" src="https://github.com/user-attachments/assets/8819fa87-db97-438f-948b-8052bcf4e6f1" />
-
-<img width="496" height="650" alt="choplist" src="https://github.com/user-attachments/assets/fe9a0732-807f-4e27-bf0e-96939ec5d361" />
 
 reconnect after disconnect -> https://streamable.com/op5kj4
 
